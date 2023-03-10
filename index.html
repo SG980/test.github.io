@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <button class="break">返回上一级</button>
     <div class="content">
         <h3 style="color:red; text-align: center;">支付须知</h3>
         <p>本站支付系统由个人搭建，在支付过程中可能会出现<b style="color:red;">风险提示</b>，请忽视风险直接支付即可，或切换支付方式。支付成功后请将截图发给群主</p>
@@ -19,11 +20,41 @@
         <button class="bt">微信支付</button>
         <button class="bt2">支付宝支付</button>
     </div>
+    <img class="img1" src="./img/微信收款.jpg" alt="微信收款">
+    <img class="img2" src="./img/支付宝收款.jpg" alt="支付宝收款">
+
 
 
 </body>
 
 <style>
+    button {
+        border: none;
+    }
+
+    .img1,
+    .img2 {
+        width: 30%;
+        position: absolute;
+        left: 50%;
+        /* 定位父级的50% */
+        top: 50%;
+        transform: translate(-50%, -50%);
+        /*自己的50% */
+        display: none;
+    }
+
+    .break {
+        position: relative;
+        height: 30px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 30px;
+        color: #ffffff;
+        font-size: 14px;
+        display: none;
+    }
+
     a {
         color: #282828;
         text-decoration: none;
@@ -68,14 +99,51 @@
 </style>
 
 <script>
+    let state = true
     let bt = document.querySelector('.bt')
     let bt2 = document.querySelector('.bt2')
+    let bk = document.querySelector('.break')
+    let content = document.querySelector('.content')
+    let weixin = document.querySelector('.img1')
+    let zhifubao = document.querySelector('.img2')
+
     bt.addEventListener('click', function () {
-        window.open('./weixin.html')
+        window.state = !window.state
+        weixin.style.display = 'block'
+        bk.style.background = '#66DD7B'
     })
     bt2.addEventListener('click', function () {
-        window.open('./zhifubao.html')
+        window.state = !window.state
+        zhifubao.style.display = 'block'
+        bk.style.background = '#3e94e4'
     })
+
+    // 监视state属性
+    Object.defineProperty(window, 'state', {
+        get: function () {
+            return state
+        },
+        set: function (newState) {
+            state = newState
+            if (state == true) {
+                bk.style.display = "none"
+                weixin.style.display = "none"
+                zhifubao.style.display = "none"
+                content.style.display = 'block'
+            } else {
+                bk.style.display = "block"
+                content.style.display = 'none'
+            }
+        }
+    })
+
+
+    bk.addEventListener('click', function () {
+        // 利用window对象访问state，才能触发defineProperty
+        window.state = !window.state
+    })
+
+
 </script>
 
 </html>
