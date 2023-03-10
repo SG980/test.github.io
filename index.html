@@ -5,64 +5,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="./img/IMG_3878.ico" rel="SHORTCUT ICON">
+    <title>绅士俱乐部</title>
 </head>
 
 <body>
-    <div id="smart-button-container">
-        <div style="text-align: center;">
-            <div id="paypal-button-container"></div>
-        </div>
+    <div class="content">
+        <h3 style="color:red; text-align: center;">支付须知</h3>
+        <p>本站支付系统由个人搭建，在支付过程中可能会出现<b style="color:red;">风险提示</b>，请忽视风险直接支付即可，或切换支付方式。支付成功后请将截图发给群主</p>
+        <p style="color:red;">遇其他问题请添加微信联系作者：S_GuangMin</p>
+        <br>
+        <br>
+        <button class="bt">微信支付</button>
+        <button class="bt2">支付宝支付</button>
     </div>
+
+
 </body>
 
 <style>
-    img {
+    a {
+        color: #282828;
+        text-decoration: none;
+    }
+
+    .content {
         width: 50%;
+        position: absolute;
+        left: 50%;
+        /* 定位父级的50% */
+        top: 10%;
+        transform: translate(-50%);
+        /*自己的50% */
+    }
+
+    .bt {
+        width: 100%;
+        line-height: 38px;
+        text-align: center;
+        color: #fcfcfc;
+        margin: 0 20px 20px 0;
+        position: relative;
+        overflow: hidden;
+        background-color: #66DD7B;
+        border: #66DD7B;
+        border-radius: 5px;
+    }
+
+
+    .bt2 {
+        width: 100%;
+        line-height: 38px;
+        text-align: center;
+        color: #fcfcfc;
+        margin: 0 20px 20px 0;
+        position: relative;
+        overflow: hidden;
+        background-color: #3e94e4;
+        border: #3e94e4;
+        border-radius: 5px;
     }
 </style>
 
-<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
-    data-sdk-integration-source="button-factory"></script>
 <script>
-    function initPayPalButton() {
-        paypal.Buttons({
-            style: {
-                shape: 'rect',
-                color: 'gold',
-                layout: 'vertical',
-                label: 'pay',
-
-            },
-
-            createOrder: function (data, actions) {
-                return actions.order.create({
-                    purchase_units: [{ "amount": { "currency_code": "USD", "value": 6.89 } }]
-                });
-            },
-
-            onApprove: function (data, actions) {
-                return actions.order.capture().then(function (orderData) {
-
-                    // Full available details
-                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-                    // Show a success message within this page, e.g.
-                    const element = document.getElementById('paypal-button-container');
-                    element.innerHTML = '';
-                    element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
-                    // Or go to another URL:  actions.redirect('thank_you.html');
-
-                });
-            },
-
-            onError: function (err) {
-                console.log(err);
-            }
-        }).render('#paypal-button-container');
-    }
-    initPayPalButton();
+    let bt = document.querySelector('.bt')
+    let bt2 = document.querySelector('.bt2')
+    bt.addEventListener('click', function () {
+        window.open('./weixin.html')
+    })
+    bt2.addEventListener('click', function () {
+        window.open('./zhifubao.html')
+    })
 </script>
 
 </html>
