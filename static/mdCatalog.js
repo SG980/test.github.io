@@ -90,10 +90,11 @@ window.onload = function () {
     const getWindowInfo = () => {
         // 将文档高度赋值给目录高度
         div.style.height = window.innerHeight + 'px'
-        // 文档可是宽度小于700时隐藏目录
-        if (window.innerWidth <= 700) {
+        // 文档可是宽度小于1000时隐藏目录
+        if (window.innerWidth <= 1000) {
             div.style.display = 'None'
             body.style.paddingLeft = 30 + 'px'
+            body.style.paddingRight = '30px'
         } else {
             div.style.display = 'inline-block'
             body.style.paddingLeft = '430px'
