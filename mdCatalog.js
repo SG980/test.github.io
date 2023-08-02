@@ -2,7 +2,7 @@ window.onload = function () {
     // 初始化目录
     let div = document.createElement('div')
     div.style.borderRight = '1px solid #eaecef'
-    div.style.padding = '20px 0px'
+    div.style.padding = '20px 20px 20px 10px'
     div.style.backgroundColor = '#FFFFFF'
     div.style.zIndex = '10'
     div.style.position = 'fixed'
@@ -10,7 +10,7 @@ window.onload = function () {
     div.style.left = '0px'
     div.style.overflowY = 'auto'
     div.style.display = 'inline-block'
-    div.style.maxWidth = '400px'
+    div.style.minWidth = '300px'
     div.style.height = '300px'
     div.className = 'MyDiv'
 
@@ -42,11 +42,11 @@ window.onload = function () {
         a.style.marginRight = '20px'
         a.style.borderRadius = '5px'
         if (i === '1') {  // 根据目录等级设计缩进
-            a.style.paddingLeft = '30px'
+            a.style.paddingLeft = '35px'
         } else if (i === '2') {
-            a.style.paddingLeft = '60px'
+            a.style.paddingLeft = '65px'
         } else if (i === '3') {
-            a.style.paddingLeft = '90px'
+            a.style.paddingLeft = '95px'
         }
         return a
     }
@@ -214,4 +214,8 @@ window.onload = function () {
     // 初始布局
     getWindowInfo()
     
+    // 调整内容
+    let writer = document.querySelector('#write')
+    writer.style.paddingLeft = '100px'
+    writer.style.marginLeft = '0px'
 }
