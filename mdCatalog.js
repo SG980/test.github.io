@@ -201,10 +201,20 @@ window.onload = function () {
             div.style.display = 'None'
             body.style.paddingLeft = 30 + 'px'
             body.style.paddingRight = '30px'
+                    
+            // 调整内容
+            let writer = document.querySelector('#write')
+            writer.style.paddingLeft = '0px'
+            writer.style.marginLeft = '0px'
         } else {
             div.style.display = 'inline-block'
             body.style.paddingLeft = '300px'
             body.style.paddingRight = '30px'
+            
+            // 调整内容
+            let writer = document.querySelector('#write')
+            writer.style.paddingLeft = '100px'
+            writer.style.marginLeft = '0px'
         }
     };
 
@@ -214,8 +224,4 @@ window.onload = function () {
     // 初始布局
     getWindowInfo()
     
-    // 调整内容
-    let writer = document.querySelector('#write')
-    writer.style.paddingLeft = '100px'
-    writer.style.marginLeft = '0px'
 }
